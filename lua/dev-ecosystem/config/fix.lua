@@ -14,7 +14,7 @@ end
 
 --- Turn raw config to valid Config object
 --- @param config any
---- @return Config
+--- @return ServerConfig
 local function fix_single(config)
   turn_to_array(config.files)
   return config
@@ -22,7 +22,7 @@ end
 
 --- Turn raw config to valid Config[] array,
 --- @param raw_config any
---- @return Configs
+--- @return ServerConfigs
 local function fix(raw_config)
   local config_array = turn_to_array(raw_config)
   return map(config_array, fix_single)

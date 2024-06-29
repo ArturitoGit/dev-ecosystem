@@ -1,14 +1,22 @@
 local parse_config = require 'dev-ecosystem.config.parse'
 local register_clients = require 'dev-ecosystem.client.register'
 
-local function main()
+--- @class Context
+--- @field capabilities? lsp.ServerCapabilities
+
+local M = {}
+
+--- Setup extension with given context
+--- @param context Context
+M.setup = function(context)
+
   local config = parse_config()
 
   if not config then
     return
   end
 
-  register_clients(config)
+  register_clients(config, context)
 end
 
-main()
+return M

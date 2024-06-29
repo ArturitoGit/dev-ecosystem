@@ -41,7 +41,7 @@ end
 --- Merge LSP server configuration
 --- with default configuration
 --- @param single_config any
---- @return Config
+--- @return ServerConfig
 local function merge_with_default(single_config)
   return merge(single_config, default_config)
 end

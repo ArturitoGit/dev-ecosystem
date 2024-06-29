@@ -18,7 +18,7 @@ end
 --- Validate single configuration object
 --- Return true if configuration is valid
 --- Return false otherwise
---- @param config Config
+--- @param config ServerConfig
 --- @return boolean
 local function is_valid(config)
 
@@ -48,7 +48,7 @@ end
 --- Validate configurations object
 --- Return true if configurations are all valid
 --- Return false otherwise
---- @param configs Configs
+--- @param configs ServerConfigs
 --- @return boolean
 local function are_valid(configs)
   if is_array(configs) then

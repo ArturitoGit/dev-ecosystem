@@ -6,16 +6,16 @@ local valid = require 'dev-ecosystem.config.validate'
 local map = require 'dev-ecosystem.utils.map'
 local merge_with_default = require 'dev-ecosystem.config.merge'
 
---- @class (exact) Config
+--- @class (exact) ServerConfig
 --- @field name string
 --- @field image string
 --- @field cmd string
 --- @field files string[]
 
---- @alias Configs Config[]
+--- @alias ServerConfigs ServerConfig[]
 
 --- Parse config for current root directory
---- @return Configs?
+--- @return ServerConfigs?
 local function parse()
 
   local content = read(config_path())
