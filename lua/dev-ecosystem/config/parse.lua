@@ -2,13 +2,14 @@ local config_path = require 'dev-ecosystem.config.path'
 local read = require 'dev-ecosystem.config.read'
 local deserialize = require 'dev-ecosystem.config.deserialize'
 local fix = require 'dev-ecosystem.config.fix'
-local valid = require 'dev-ecosystem.config.validate'
+local valid = require 'dev-ecosystem.config.validate.validate'
 local map = require 'dev-ecosystem.utils.map'
 local merge_with_default = require 'dev-ecosystem.config.merge'
 
 --- @class (exact) ServerConfig
 --- @field name string
 --- @field image string
+--- @field dockerfile? string
 --- @field cmd string
 --- @field files string[]
 

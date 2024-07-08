@@ -12,11 +12,24 @@ local function turn_to_array(object)
   return { object }
 end
 
+--- Fix files configuration field
+--- @param config ServerConfig
+local function fix_files(config)
+  config.files = turn_to_array(config.files)
+end
+
+--- Compute image name for dockerfile configuration
+--- @param config ServerConfig
+local function fix_image_name(config)
+  config.image = config.image or config.name
+end
+
 --- Turn raw config to valid Config object
 --- @param config any
 --- @return ServerConfig
 local function fix_single(config)
-  turn_to_array(config.files)
+  fix_files(config)
+  fix_image_name(config)
   return config
 end
 

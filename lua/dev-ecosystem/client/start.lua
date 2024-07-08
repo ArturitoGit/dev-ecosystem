@@ -1,8 +1,9 @@
 --- Get LSP minimal VIM client config from defined server config
 --- @param config ServerConfig
+--- @param context Context
 --- @return vim.lsp.ClientConfig
-local function minimal_client_config(config)
-  local cwd = vim.fn.getcwd()
+local function minimal_client_config(config, context)
+  local cwd = context.pwd
 
   return {
     name = config.name,
@@ -21,17 +22,20 @@ end
 --- @param context Context
 local function start_server(server_config, context)
 
-  local lsp_config = minimal_client_config(server_config)
+  local options = context.setup_options
+  local lsp_config = minimal_client_config(server_config, context)
 
-  if context.capabilities then
-    lsp_config.capabilities = context.capabilities
+  if options.capabilities then
+    lsp_config.capabilities = options.capabilities
   end
 
-  if context.on_attach then
-    lsp_config.on_attach = context.on_attach
+  if options.on_attach then
+    lsp_config.on_attach = options.on_attach
   end
 
-  vim.lsp.start(lsp_config)
+  vim.schedule(function()
+    vim.lsp.start(lsp_config)
+  end)
 end
 
 return start_server
