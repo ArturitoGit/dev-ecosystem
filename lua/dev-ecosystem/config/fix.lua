@@ -21,7 +21,7 @@ end
 --- Compute image name for dockerfile configuration
 --- @param config ServerConfig
 local function fix_image_name(config)
-  config.image = config.image or config.name
+  config.image_name = config.image or config.name
 end
 
 --- Turn raw config to valid Config object

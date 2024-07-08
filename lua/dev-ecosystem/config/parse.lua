@@ -6,9 +6,14 @@ local valid = require 'dev-ecosystem.config.validate.validate'
 local map = require 'dev-ecosystem.utils.map'
 local merge_with_default = require 'dev-ecosystem.config.merge'
 
+--- This class describes the structure of the configuration
+--- once it has been fixed.
+--- It does not describe the configuration as it must be written
+--- by the user.
 --- @class (exact) ServerConfig
 --- @field name string
---- @field image string
+--- @field image_name string
+--- @field image? string
 --- @field dockerfile? string
 --- @field cmd string
 --- @field files string[]
@@ -29,12 +34,12 @@ local function parse()
     return nil
   end
 
-  if not valid(raw_config) then
+  local configs = fix(raw_config)
+  if not configs then
     return nil
   end
 
-  local configs = fix(raw_config)
-  if not configs then
+  if not valid(configs) then
     return nil
   end
 

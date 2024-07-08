@@ -30,7 +30,7 @@ local function build_image(config, callback)
   execute_as_lsp_command({
     cmd = {
       'docker', 'build',
-      '-t', config.name,
+      '-t', config.image_name,
       '-f', config.dockerfile,
       '.'
     },

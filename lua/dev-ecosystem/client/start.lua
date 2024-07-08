@@ -11,7 +11,7 @@ local function minimal_client_config(config, context)
       "docker", "run", "--rm", "--interactive",
       "-v", cwd..":"..cwd,
       "-w", cwd,
-      config.image,
+      config.image_name,
       config.cmd
     }
   }

@@ -10,19 +10,18 @@ M.is_string = function(value)
   return type(value) == 'string'
 end
 
---- Check that given target is either a
---- single element of given shape,
---- or an array whose elements are all of given shape
+--- Check that given target is an array
+--- whose elements are all of given shape
 --- @param shape fun(target: any): boolean
 --- @param target any | any[]
 --- @return boolean
-M.is_one_or_more = function(shape, target)
+M.is_array_of = function(shape, target)
   if not target then
     return false
   end
 
   if not is_array(target) then
-    return shape(target)
+    return false
   end
 
   return all_match(target, shape)
